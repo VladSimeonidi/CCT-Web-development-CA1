@@ -1,10 +1,38 @@
 const content = document.getElementById('content');
-console.log(content);
 
-function request() {
-    axios.get("http://localhost/temp/php/listing.php").then(function (response) {
+function searchByActorAndMivie() {
+    const actorInputValue = document.getElementById("actorInput").value;
+    const movieInputValue = document.getElementById("movieInput").value;
+
+    axios.post("http://localhost/controllers/filter.php", {queries: [actorInputValue, movieInputValue]}).then(function (response) {
         content.innerHTML = response.data;
-        console.log(response.data)
-        // do whatever you want if console is [object object] then stringify the response
     })
 }
+
+function clickTableRow(el) {
+    if (el.dataset.id) {
+        window.location.assign(`movie/${el.dataset.id}`)
+    }
+}
+
+function nextMovie(el) {
+    function getLastPart(url) {
+        const parts = url.split('/');
+        return parts.at(-1);
+    }
+    let getId = getLastPart(window.location.pathname);
+    let parsedId = parseInt(getId);
+    const nextId = parsedId + 1;
+    window.location.assign(nextId);
+};
+
+function prevMovie(el) {
+    function getLastPart(url) {
+        const parts = url.split('/');
+        return parts.at(-1);
+    }
+    let getId = getLastPart(window.location.pathname);
+    let parsedId = parseInt(getId);
+    const prevId = parsedId - 1;
+    window.location.assign(prevId);
+};
