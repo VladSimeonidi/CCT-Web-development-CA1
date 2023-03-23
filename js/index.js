@@ -1,6 +1,5 @@
-const content = document.getElementById('content');
-
 function searchByActorAndMivie() {
+    const content = document.getElementById('content');
     const actorInputValue = document.getElementById("actorInput").value;
     const movieInputValue = document.getElementById("movieInput").value;
 
@@ -36,3 +35,10 @@ function prevMovie(el) {
     const prevId = parsedId - 1;
     window.location.assign(prevId);
 };
+
+function clickBook(id) {
+    const content = document.getElementById('content');
+    axios.get(`http://localhost/movie/book/${id}`).then(function (response) {
+        content.innerHTML = response.data;
+    })
+}

@@ -19,36 +19,30 @@ $count = "SELECT COUNT(*) as count FROM movies;";
 
 // execute the query and get the result set
 $result = $conn->query($sql);
-$result2 = $conn->query($count);
-$row = $result2->fetch_assoc();
+$countResult = $conn->query($count);
+$row = $countResult->fetch_assoc();
 $total = $row["count"];
 
 $movie = $result->fetch_assoc();
-$video = $movie["video"];
-$desc = $movie["desc"];
-$poster = $movie["poster"];
-$title = $movie["movie"];
+if ($result->num_rows == 0) {
+    echo 'SUCH MOVIE DOES NOT EXIST!';
+} else {
+    $video = $movie["video"];
+    $desc = $movie["desc"];
+    $poster = $movie["poster"];
+    $title = $movie["movie"];
 
 // close the connection
-$conn->close();
+    $conn->close();
 
-echo "<h5 class='card-title mb-3'>$title</h5>";
+    echo "<h5 class='card-title mb-3'>$title</h5>
+          <div class='row'>
+            <div class='col-sm-12 d-flex justify-content-center justify-content-sm-center col-lg-3'><img class='image' src='$poster' alt=''></div>
+            <div class='col-sm-12 col-lg-4 my-4'>$desc</div>
+            <div class='col-sm-12 col-lg-5'>$video</div>
+          </div>";
 
-echo "<div class='row'>";
-echo "<div class='col-sm-3'><img class='image' src='$poster' alt=''></div>";
-echo "<div class='col-sm-4 mt-4'>$desc</div>";
-echo "<div class='col-sm-5'>$video</div>";
-echo "</div>";
-echo '<div class="d-flex justify-content-center mt-4">';
-
-if($movie_id > 1) {
-    echo '<button onclick="prevMovie()" type="button" class="btn btn-outline-primary">Prev</button>';
+    include 'components/buttons.php';
 }
 
-if($movie_id < $total) {
-    echo '<button onclick="nextMovie()" type="button" class="btn btn-outline-primary ms-1">Next</button>';
-}
-
-echo '<button type="button" class="btn btn-outline-primary ms-1">Book</button>';
-echo '</div>';
 ?>

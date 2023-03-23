@@ -1,4 +1,5 @@
 <?php
+echo '<div class="table-wrapper">';
 echo '<table class="table table-success">
       <thead>
         <tr>
@@ -30,5 +31,6 @@ if (mysqli_num_rows($result) == 0) {
 }
 
 
-echo '</tbody>';
-echo '</table>';
+echo '</tbody>
+      </table>';
+echo '</div>';

@@ -15,6 +15,8 @@ get('/', 'views/index.php');
 // The $id will be available in user.php
 get('/movie/$id', 'views/movie.php');
 
+get('/movie/book/$id', 'controllers/book.php');
+
 // Dynamic GET. Example with 2 variables
 // The $name will be available in full_name.php
 // The $last_name will be available in full_name.php
@@ -52,6 +54,7 @@ get('/callback/$name/$last_name', function($name, $last_name){
 // any can be used for GETs or POSTs
 
 post('/controllers/filter.php', 'controllers/filter.php');
+post('/movie/contact.php', 'controllers/contact.php');
 
 // For GET or POST
 // The 404.php which is inside the views folder will be called

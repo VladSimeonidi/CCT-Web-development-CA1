@@ -16,10 +16,10 @@
 
 <main class="container my-4 flex-grow-1">
 
-    <h1 class="mb-4">Welcome to my website</h1>
-
     <div class="card">
         <div class="card-body">
+
+            <h1 class="mb-4">Welcome to my website</h1>
 
             <div class="row mb-4">
                 <div class="col col-lg-3">

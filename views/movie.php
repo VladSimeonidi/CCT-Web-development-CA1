@@ -15,9 +15,10 @@
 
 <main class="container my-4 flex-grow-1">
 
-    <div id="content" class="content">
-        <div class="card">
-            <div class="card-body">
+
+    <div class="card">
+        <div class="card-body">
+            <div id="content" class="content">
                 <?php include 'controllers/movie.php'; ?>
             </div>
         </div>
