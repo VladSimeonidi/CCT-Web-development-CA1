@@ -11,11 +11,9 @@
 </head>
 <body class="container-fluid p-0 min-vh-100 d-flex flex-column">
 
-<?php include 'includes/navbar.php'; ?>
+<?php include 'components/navbar.php'; ?>
 
 <main class="container my-4 flex-grow-1">
-
-
     <div class="card">
         <div class="card-body">
             <div id="content" class="content">

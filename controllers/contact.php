@@ -2,33 +2,27 @@
 $name = $_POST['name'];
 $email = $_POST['email'];
 $address = $_POST['address'];
+$movieId = $_POST['mivieId'];
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cinema";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// check if the connection was successful
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+try {
+// create a connection to the database
+    require_once 'db/config.php';
 // create a SQL query
-$sql = "INSERT INTO contacts(email, name, address) VALUES('$email','$name','$address')";
+    $sql = "INSERT INTO booking(movieId, email, name, address) VALUES('$movieId','$email','$name','$address')";
 
 // execute the query and get the result set
-$result = $conn->query($sql);
+    $result = $conn->query($sql);
 
-if ($result) {
-
-    echo "Query executed successfully.";
-
-} else {
-
-    echo "Query execution failed: " . mysqli_error($conn);
-
-}
+    if ($result) {
+        // redirect to main page if result is true
+        header("Location: http://localhost/");
+        exit();
+    } else {
+        echo "Query execution failed: " . mysqli_error($conn);
+    }
 
 // close the connection
-$conn->close();
+    $conn->close();
+} catch (Exception $e) {
+    echo 'Message: ' . $e->getMessage();
+}
