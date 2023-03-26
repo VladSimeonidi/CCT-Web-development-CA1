@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Movies</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
@@ -22,11 +22,12 @@
             <h1 class="mb-4">Welcome to my website</h1>
 
             <div class="row mb-4">
-                <div class="col col-lg-3">
-                    <input id="actorInput" oninput="throttle(searchByActorAndMivie, 1000)" type="text" class="form-control"
+                <div class="col-12 col-lg-3">
+                    <input id="actorInput" oninput="throttle(searchByActorAndMivie, 1000)" type="text"
+                           class="form-control"
                            placeholder="Actor" aria-label="actor">
                 </div>
-                <div class="col col-lg-3">
+                <div class="col-12 mt-4 mt-lg-0 col-lg-3">
                     <input id="movieInput" oninput="throttle(searchByActorAndMivie, 1000)" type="text" class="form-control"
                            placeholder="Movie" aria-label="movie">
                 </div>

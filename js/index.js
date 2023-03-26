@@ -17,13 +17,15 @@ const throttle = function (func, delay) {
 
 function searchByActorAndMivie() {
     const content = document.getElementById('content');
-    const actorInputValue = document.getElementById("actorInput").value;
-    const movieInputValue = document.getElementById("movieInput").value;
+    const actorInput = document.getElementById("actorInput");
+    const movieInput = document.getElementById("movieInput");
 
-    if (content) {
-        axios.post("http://localhost/controllers/filter.php", {queries: [actorInputValue, movieInputValue]}).then(function (response) {
+    if (content && actorInput && movieInput) {
+        axios.post("http://localhost/controllers/filter.php", {queries: [actorInput.value, movieInput.value]}).then(function (response) {
             content.innerHTML = response.data;
         })
+    } else {
+        console.log("Error!")
     }
 }
 
